@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { View, TextInput, Button, StyleSheet, Alert } from 'react-native'
+import {
+    View,
+    Text,
+    TextInput,
+    Button,
+    StyleSheet,
+    Alert,
+    TouchableOpacity,
+    textStyle
+} from 'react-native'
 
 const App = () => {
     const [username, setUsername] = useState('')
@@ -29,13 +38,22 @@ const App = () => {
                     height: 100
                 }}
             >
-                <View style={{ flex: 1, backgroundColor: 'darkblue' }} />
-                <View style={{ flex: 1, backgroundColor: 'yellow' }} />
-                <View style={{ flex: 1, backgroundColor: 'darkred' }} />
+                <View style={{ flex: 1, backgroundColor: '#4169E1' }} />
+                <View style={{ flex: 1, backgroundColor: '#1E90FF' }} />
+                <View style={{ flex: 1, backgroundColor: '#00BFFF' }} />
             </View>
 
             {/* Formulário de login */}
             <View style={styles.container}>
+                <Text
+                    style={{
+                        fontSize: 24,
+                        fontWeight: 'bold',
+                        paddingBottom: 20
+                    }}
+                >
+                    Login
+                </Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={setUsername}
@@ -50,8 +68,18 @@ const App = () => {
                     secureTextEntry={true}
                 />
                 <View style={styles.buttonContainer}>
-                    <Button title="Limpar" onPress={handleClear} />
-                    <Button title="Entrar" onPress={handleLogin} />
+                    <TouchableOpacity
+                        onPress={handleClear}
+                        style={[styles.button, styles.buttonLimpar]}
+                    >
+                        <Text style={[styles.text, textStyle]}>Limpar</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={handleLogin}
+                        style={[styles.button, styles.buttonEntrar]}
+                    >
+                        <Text style={[styles.text, textStyle]}>Entrar</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 
@@ -63,9 +91,9 @@ const App = () => {
                     gap: -1
                 }}
             >
-                <View style={{ flex: 1, backgroundColor: 'purple' }} />
-                <View style={{ flex: 1, backgroundColor: 'darkorange' }} />
-                <View style={{ flex: 1, backgroundColor: 'green' }} />
+                <View style={{ flex: 1, backgroundColor: '#00BFFF' }} />
+                <View style={{ flex: 1, backgroundColor: '#1E90FF' }} />
+                <View style={{ flex: 1, backgroundColor: '#4169E1' }} />
             </View>
         </View>
     )
@@ -76,21 +104,39 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 32
+        paddingHorizontal: 32,
+        gap: 10
     },
     input: {
-        height: 40,
         width: '100%',
         borderColor: 'gray',
+        borderRadius: 8,
         borderWidth: 1,
         marginBottom: 10,
-        paddingHorizontal: 10
+        paddingHorizontal: 20,
+        paddingVertical: 10
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
         marginTop: 10
+    },
+    button: {
+        padding: 10,
+        borderRadius: 8,
+        width: '48%'
+    },
+    buttonEntrar: {
+        backgroundColor: '#318234'
+    },
+    buttonLimpar: {
+        backgroundColor: '#9E1E1E'
+    },
+    text: {
+        color: 'white',
+        textAlign: 'center',
+        fontWeight: 'bold'
     }
 })
 
