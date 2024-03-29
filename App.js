@@ -3,12 +3,12 @@ import {
     View,
     Text,
     TextInput,
-    Button,
     StyleSheet,
     Alert,
     TouchableOpacity,
     textStyle
 } from 'react-native'
+import { createDrawerNavigator } from '@react-navigation/drawer'
 
 const App = () => {
     const [username, setUsername] = useState('')
@@ -18,7 +18,7 @@ const App = () => {
         if (username === '' || password === '') {
             Alert.alert('Campos Vazios', 'Por favor, preencha todos os campos.')
         } else {
-            Alert.alert('Login', `Username: ${username}\nPassword: ${password}`)
+            Alert.alert('Bem-vindo!', `${username}`)
         }
     }
 
@@ -26,6 +26,8 @@ const App = () => {
         setUsername('')
         setPassword('')
     }
+
+    const Drawer = createDrawerNavigator()
 
     return (
         <View style={{ flex: 1, backgroundColor: '#fefefe' }}>
@@ -42,7 +44,6 @@ const App = () => {
                 <View style={{ flex: 1, backgroundColor: '#1E90FF' }} />
                 <View style={{ flex: 1, backgroundColor: '#00BFFF' }} />
             </View>
-
             {/* Formulário de login */}
             <View style={styles.container}>
                 <Text
